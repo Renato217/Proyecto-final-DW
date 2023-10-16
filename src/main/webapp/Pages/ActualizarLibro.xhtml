@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Actualizar libros</title>
+        <h:outputScript name="script.js" library="js"/>
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="theme.css" library="css"/>
+
+        <style>
+            .contenedor {
+                display: grid;
+                justify-content: center;
+                align-content: start;
+                height: 10vh; /* Ajusta la altura según tus necesidades */
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="contenedor">
+            <h1>Actualizar libros</h1>
+            <p:commandButton id="btnuser" value="REGRESAR" action="#{bkn_ventana.VentanaHomeLibro()}"/>
+            <br></br>
+        </div>
+        <h:form>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <p:panelGrid columns="2"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                         layout="grid"
+                         styleClass="ui-panelgrid-blank ui-fluid"
+                         style="border:0px none; background-color:transparent; " >
+                <p:outputLabel value="ID"/>
+                <p:inputText id="txtId" value="#{bkn_LUsuario.id}"/>
+                <p:outputLabel value="NOMBRE"/>
+                <p:inputText id="txtNombre" value="#{bkn_LUsuario.nombreUsuario}"/>
+                <p:outputLabel value="CATEGORIA"/>
+                <p:inputText id="txtFechaNacimiento" value="#{bkn_LUsuario.fechaNacimiento}"/>
+                <p:outputLabel value="AÑO PUBLICACION"/>
+                <p:inputText id="txtGradoAcademico" value="#{bkn_LUsuario.gradoAcademico}"/>
+                <p:outputLabel value="EDITORIAL"/>
+                <p:inputText id="txtDireccion" value="#{bkn_LUsuario.direccion}"/>
+                <p:outputLabel value="NOMBRE AUTOR"/>
+                <p:inputText id="txtEstado" value="#{bkn_LUsuario.estado}"/>
+
+                 <br></br>
+            <p:commandButton value="ACTUALIZAR" action="#{bkn_ingresaLibro.ActualizarLibros()}" update="booksTable" />         
+            
+            </p:panelGrid>
+            <br></br>
+            <p:dataTable id="booksTable" var="book" value="#{bkn_ingresaLibro.lista}" editable="true">
+                <p:column headerText="Id">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{book.idl}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{book.idl}" label="Id" /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{book.nombrel}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{book.nombrel}" label="nombre" /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Categoria">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{book.categorial}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{book.categorial}" label="categoria" /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Año publicacion">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{book.aniol}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{book.aniol}" label="Año_publicacion" /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Editorial">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{book.editoriall}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{book.editoriall}" label="editorial" /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Nombre Autor">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{book.nombreAutorl}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{book.nombreAutorl}" label="nombre_autor" /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Estado">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{book.opcionSeleccionada}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{book.opcionSeleccionada}" label="estado" /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+        </h:form>       
+
+    </h:body>
+
+</html>

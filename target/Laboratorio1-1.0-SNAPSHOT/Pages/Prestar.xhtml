@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <h:outputScript name="script.js" library="js"/>
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="theme.css" library="css"/>
+        <title>Alquiler libros</title>
+    </h:head>
+     <h:body>
+    <h:form class="card"  >
+      
+            <br></br>
+            <style>
+            /* reset on the showcase style*/
+            body .ui-panelgrid .ui-panelgrid-cell {
+            background-color: transparent;
+            }
+
+            /* example use of styles for your form */
+            .my-heading-row {
+            background-color: var(--surface-c);
+            font-weight: bold;
+            margin: 0 auto;
+            }
+            </style>
+    <p:panelGrid columns="2"
+                 columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                 layout="grid"
+                 styleClass="ui-panelgrid-blank ui-fluid"
+                 style="border:0px none; background-color:transparent; " >
+                <p:row
+                    styleClass="my-heading-row" style="font-size: larger; text-align: center">
+                    PRESTAR LIBROS 
+                </p:row> 
+                <p:outputLabel value="ID USUARIO"/>
+                <p:inputText id="txtUsuario" value="#{bkn_ingresaLibro.idUser}"/>
+                <p:outputLabel value="ID LIBRO"/>
+                <p:inputText id="txtlibro" value="#{bkn_ingresaLibro.idl}"/>
+                
+            </p:panelGrid>
+            <p:panelGrid columns="2"  styleClass="ui-panelgrid-blank ui-fluid" style="margin: 50px 190px ;" >
+                <p:commandButton id="buttonregre" value="REGRESAR" action="#{bkn_ventana.VentanaHomeAlquiler()}" />
+                <p:commandButton id="buttons" value="Alquilar" action="#{bkn_ingresaLibro.PrestarLibro()}"  />
+           <p:messages id="messages" showDetail="true">
+            <p:autoUpdate/>
+        </p:messages>
+            </p:panelGrid>
+            
+    </h:form> 
+ </h:body>
+</html>

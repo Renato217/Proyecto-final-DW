@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Ingreso LIbro</title>
+        <h:outputScript name="script.js" library="js"/>
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="theme.css" library="css"/>
+        
+        <style>
+        .contenedor {
+            display: grid;
+            justify-content: center;
+            align-content: start;
+            height: 10vh; /* Ajusta la altura según tus necesidades */
+        }
+        
+        /* Estilos CSS opcionales */
+        .panel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px; /* Espacio entre columnas */
+        }
+    </style>
+    
+    </h:head>
+    
+    <h:body>
+        <div class="contenedor">
+            <h1>Ingreso de libros</h1>
+            <p:commandButton id="btnuser" value="REGRESAR" action="#{bkn_ventana.VentanaHomeLibro()}"/>
+            <br></br>
+        </div>
+
+        <div class="panel-grid">
+
+            <div>
+                <h:form>
+                    <br></br>
+                    <p:panelGrid columns="2">
+                        
+                        
+
+                        <p:outputLabel for="nombrelibro" styleClass="block" >Nombre del libro </p:outputLabel>
+                        <p:inputText id="nombrelibro" value="#{bkn_ingresaLibro.nombrel}" 
+                                     oninput="this.value = this.value.replace(/[0-9]/g, '');" 
+                                     styleClass="block" placeholder="ejem Atlas"/>
+
+                        <p:outputLabel for="categoria" styleClass="block" >Categoria </p:outputLabel>                    
+                        <p:inputText id="categoria" value="#{bkn_ingresaLibro.categorial}"
+                                     oninput="this.value = this.value.replace(/[0-9]/g, '');" 
+                                     styleClass="block" placeholder="ejem Mitologia"/>
+
+                        <p:outputLabel for="@next" value="Date" />                  
+                        <p:inputMask id="date" value="#{bkn_ingresaLibro.aniol}" mask="99/99/9999" />
+
+                        <p:outputLabel for="editorial" styleClass="block" >Editorial </p:outputLabel>                   
+                        <p:inputText id="editorial" value="#{bkn_ingresaLibro.editoriall}" 
+                                     styleClass="block" placeholder="ejem Ariola"/>
+                        
+                        <p:outputLabel for="autor" styleClass="block" >Nombre Autor </p:outputLabel>
+                        <p:inputText  id="autor" value="#{bkn_ingresaLibro.nombreAutorl}" 
+                                      oninput="this.value = this.value.replace(/[0-9]/g, '');" 
+                                      styleClass="block" placeholder="ejem Bernardo"/>
+                        
+                        <p:outputLabel for="@next" value="Estado"/>
+                        <p:selectOneMenu id="option" value="#{bkn_ingresaLibro.opcionSeleccionada}">                   
+                            <f:selectItem itemLabel="Disponible" itemValue="disponible"/>
+                            <f:selectItem itemLabel="No disponible" itemValue="noDisponible"/>
+
+                            <f:facet name="footer">
+                                <p:divider styleClass="mt-0" />
+                                <h:outputText value=" " style="font-weight:bold;"/>
+                            </f:facet>
+                        </p:selectOneMenu>
+
+                        <p:commandButton id="btnIngresarLibro" value="Ingresar libro" action="#{bkn_ingresaLibro.enviarLibros()}"/>
+                        
+                        
+
+                    </p:panelGrid>
+                </h:form>
+
+            </div>
+
+        </div>
+
+    </h:body>
+</html>

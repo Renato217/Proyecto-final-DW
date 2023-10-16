@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:head>
+        <h:outputScript name="script.js" library="js"/>
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="theme.css" library="css"/>
+        <title>Usuarios</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            
+        <div class="card">
+            <br></br>
+            <style> button.ui-button {margin-right: 22rem; margin-left: 4rem;}</style>
+            <p:commandButton id="btnuser" value="REGRESAR" action="#{bkn_ventana.HomeUsuarios()}"/>
+            <p:outputLabel value="LISTA DE USUARIOS" style= "font-size: 24px; font-weight: bold;" />
+        </div>   
+        <br></br>    
+        <div class="card">
+            <p:dataTable var="product" value="#{bkn_LUsuario.lista}">
+            <p:column headerText="ID" style="text-align: center">
+                <h:outputText value="#{product.id}" />
+            </p:column>
+            <p:column headerText="NOMBRE" style="text-align: center">
+                <h:outputText value="#{product.nombreUsuario}" />
+            </p:column>
+            <p:column headerText="FECHA DE NACIMIENTO" style="text-align: center">
+                <h:outputText value="#{product.fechaNacimiento}" />
+            </p:column>
+            <p:column headerText="GRADO ACADEMICO" style="text-align: center">
+                <h:outputText value="#{product.gradoAcademico}" />
+            </p:column>
+            <p:column headerText="DIRECCIÓN" style="text-align: center">
+                <h:outputText value="#{product.direccion}" />
+            </p:column>
+            <p:column headerText="ESTADO" style="text-align: center">
+                <h:outputText value="#{product.estado}" />
+            </p:column>
+            <p:column headerText="USUARIO" style="text-align: center">
+                <h:outputText value="#{product.usuario}" />
+            </p:column>
+            <p:column headerText="CONTRASEÑA" style="text-align: center">
+                <h:outputText value="#{product.contraseña}" />
+            </p:column>
+        </p:dataTable>
+        </div>
+        </h:form>
+    </h:body>
+</html>

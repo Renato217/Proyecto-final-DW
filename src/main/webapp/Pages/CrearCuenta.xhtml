@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <h:outputScript name="script.js" library="js"/>
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="theme.css" library="css"/>
+        <title>Creacion de cuenta</title>
+    </h:head>
+    <h:body >
+        <h:form  >
+            <br></br>
+            <p:outputLabel value="REGISTRATE" style="font-size:45px"/>
+            <br></br>
+            <p:outputLabel value="Es rapido y facil" style="font-size:20px"/>
+            <p:panelGrid columns="2" style="background-color: #add8e6;">
+                <p:outputLabel value="Nombre Completo" />
+                <p:inputText id="txtNombre" value="#{bkn_Users.nombreUsuario}" style="background-color: #add8e6;" />
+                <p:outputLabel value="Fecha Nacimiento"/>
+  <p:datePicker pattern="yyyy-MM-dd" id="lazy" value="#{bkn_Users.fechaNacimiento}" 
+                model="#{datePickerMetadataView.modelLazy}" 
+                monthNavigator="true"  yearNavigator="true"/>
+                <p:outputLabel value="Grado Academico"/>
+                <p:selectOneMenu id="txtEstudios" value="#{bkn_Users.gradoAcademico}" required="true" label="Text 2" style="width: 12rem" >
+                    <f:selectItem itemLabel="Seleccione uno" itemValue="" noSelectionOption="true" />
+                    <f:selectItem itemLabel="Primaria" itemValue="Primaria"/>
+                    <f:selectItem itemLabel="Basico" itemValue="Basico"/>
+                    <f:selectItem itemLabel="Diversificado" itemValue="Diversificado"/>
+                    <f:selectItem itemLabel="Universitario" itemValue="Universitario"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="Direccion"/>
+                <p:inputText id="txtDireccion" value="#{bkn_Users.direccion}" style="background-color: #add8e6;" />
+                <p:outputLabel value="Usuario"/>
+                <p:inputText id="txtUsuario" value="#{bkn_Users.usuario}" style="background-color: #add8e6;" />
+                <p:outputLabel value="Constraseña"/>
+                <p:inputText id="txtContraseña" value="#{bkn_Users.contraseña}" style="background-color: #add8e6;" />
+                <p:commandButton id="btnIngresar" value="REGISTRARTE" action="#{bkn_Users.AgregarUsers()}" oncomplete="bkn_ventana.VentanaLogin()"/>
+                <p:messages id="messages" showDetail="true">
+                    <p:autoUpdate/>
+                </p:messages>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
